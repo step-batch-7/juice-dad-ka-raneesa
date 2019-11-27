@@ -21,10 +21,10 @@ describe("getIndexOfAction", function() {
       2
     );
   });
-  it("should return -1 if both are exists", function() {
+  it("should give -1 if both are exists", function() {
     assert.strictEqual(utilities.getIndexOfAction(["--save", "--query"]), -1);
   });
-  it("should return -1 if both doesn't exists", function() {
+  it("should give -1 if both doesn't exists", function() {
     assert.strictEqual(utilities.getIndexOfAction(["hi", "bye"]), -1);
   });
 });
@@ -35,34 +35,8 @@ describe("invalidMsg", function() {
   });
 });
 
-describe("readFromFile", function() {
-  it("Should read given File", function() {
-    let expected = "this is for testing";
-    assert.strictEqual(
-      utilities.readFromFile("./readFileForTest.js"),
-      expected
-    );
-  });
-});
-
-describe("writeIntoFile", function() {
-  it("Should write to the given file", function() {
-    utilities.writeIntoFile("./writeFileForTest.js", "hai");
-    assert.strictEqual(utilities.readFromFile("./writeFileForTest.js"), "hai");
-  });
-});
-
 describe("timeStamp", function() {
   it("Should give time", function() {
     assert.strictEqual(utilities.timeStamp(), new Date().toJSON());
-  });
-});
-
-describe("isFilePresent", function() {
-  it("Should validate if file is present", function() {
-    assert.ok(utilities.isFilePresent("./beverage.js"));
-  });
-  it("Should validate if file is not present", function() {
-    assert.ok(!utilities.isFilePresent("./packages"));
   });
 });

@@ -1,17 +1,5 @@
 const fs = require("fs");
 
-const readFromFile = function(filepath) {
-  return fs.readFileSync(filepath, "utf8");
-};
-
-const writeIntoFile = function(filepath, data) {
-  fs.writeFileSync(filepath, data);
-};
-
-const isFilePresent = function(filepath) {
-  return fs.existsSync(filepath);
-};
-
 const timeStamp = function() {
   return new Date().toJSON();
 };
@@ -36,6 +24,3 @@ exports.isNumber = isNumber;
 exports.timeStamp = timeStamp;
 exports.invalidMsg = inValidMsg;
 exports.getIndexOfAction = getIndexOfAction;
-exports.isFilePresent = isFilePresent;
-exports.readFromFile = readFromFile;
-exports.writeIntoFile = writeIntoFile;
