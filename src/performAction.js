@@ -5,7 +5,7 @@ const isValidInput = require("./inputValidation").isValidInput;
 const invalidMsg = require("./utilitiesLib").invalidMsg;
 
 const validateAndPerformAction = function(
-  args,
+  arguments,
   isFilePresent,
   readFromFile,
   writeIntoFile,
@@ -17,7 +17,7 @@ const validateAndPerformAction = function(
       return invalidMsg();
     }
     return performAction(
-      args,
+      arguments,
       isFilePresent,
       readFromFile,
       writeIntoFile,
@@ -28,7 +28,7 @@ const validateAndPerformAction = function(
 };
 
 const performAction = function(
-  args,
+  arguments,
   isFilePresent,
   readFromFile,
   writeIntoFile,
@@ -37,7 +37,7 @@ const performAction = function(
 ) {
   if (args.includes("--save")) {
     const newRecord = save(
-      args,
+      arguments,
       isFilePresent,
       readFromFile,
       writeIntoFile,
@@ -50,7 +50,7 @@ const performAction = function(
   }
   if (args.includes("--query")) {
     const empData = query(
-      args,
+      arguments,
       isFilePresent,
       readFromFile,
       writeIntoFile,

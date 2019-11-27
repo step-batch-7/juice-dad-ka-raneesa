@@ -1,14 +1,19 @@
-const lib = require("./src/beverageLib.js");
-const inputValidation = require("./src/inputValidation.js").inputValidation;
-let inputData = process.argv.slice(2);
+const timeStamp = require("./src/utilitiesLib").timeStamp;
+const validateAndPerformAction = require("./src/performAction")
+  .validateAndPerformAction;
 
-let validData = inputValidation(inputData);
-
-const generateTime = function() {
-  return new Date();
+const main = function() {
+  const arguments = process.argv.slice(2);
+  const path = "./transactionsData.json";
+  const result = validateAndPerformAction(
+    arguments,
+    fs.existsSync,
+    fs.readFileSync,
+    fs.writeFileSync,
+    timeStamp,
+    path
+  );
+  console.log(result);
 };
 
-let result = lib.checkingValidData(inputData, validData, generateTime);
-console.log(result);
-
-exports.generateTime = generateTime;
+main();

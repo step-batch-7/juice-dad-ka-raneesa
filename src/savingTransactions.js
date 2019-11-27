@@ -12,7 +12,7 @@ const generateTransactionRecord = function(input, timeStamp) {
 };
 
 const save = function(
-  args,
+  arguments,
   isFilePresent,
   readFromFile,
   writeIntoFile,
@@ -21,13 +21,13 @@ const save = function(
 ) {
   let record = {};
   if (isFilePresent(path)) {
-    const data = readFromFile(path);
+    const data = readFromFile(path, "utf8");
     record = JSON.parse(data);
   }
   const recordKeys = Object.keys(record);
-  const indexOfEmpId = args.indexOf("--empId") + 1;
-  const empId = args[indexOfEmpId];
-  const newRecord = generateTransactionRecord(args, timeStamp);
+  const indexOfEmpId = arguments.indexOf("--empId") + 1;
+  const empId = arguments[indexOfEmpId];
+  const newRecord = generateTransactionRecord(arguments, timeStamp);
   if (recordKeys.includes(empId)) {
     record[empId].push(newRecord);
   } else {

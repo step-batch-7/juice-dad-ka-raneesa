@@ -1,6 +1,7 @@
 const assert = require("assert");
-
-const saveAction = require("../src/savingTransactions.js");
+const generateTransactionRecord = require("../src/savingTransactions.js")
+  .generateTransactionRecord;
+const saveAction = require("../src/savingTransactions.js").save;
 
 describe("generateTransactionRecord", function() {
   it("Should generate transaction record", function() {
@@ -25,7 +26,7 @@ describe("generateTransactionRecord", function() {
       return "2019-11-26T05:33:25.642Z";
     };
     assert.deepStrictEqual(
-      saveAction.generateTransactionRecord(data, timeStamp),
+      generateTransactionRecord(data, timeStamp),
       expected
     );
   });
@@ -33,7 +34,7 @@ describe("generateTransactionRecord", function() {
 
 describe("save", function() {
   it("Should validate new Transaction data", function() {
-    let args = [
+    let arguments = [
       "--save",
       "--qty",
       "1",
@@ -55,8 +56,8 @@ describe("save", function() {
       return false;
     };
     let path = "./deepika.js";
-    let actual = saveAction.save(
-      args,
+    let actual = saveAction(
+      arguments,
       isFilePresent,
       readFromFile,
       writeIntoFile,
@@ -75,8 +76,8 @@ describe("save", function() {
     isFilePresent = function(filepath) {
       return true;
     };
-    actual = saveAction.save(
-      args,
+    actual = saveAction(
+      arguments,
       isFilePresent,
       readFromFile,
       writeIntoFile,
@@ -92,10 +93,10 @@ describe("save", function() {
     assert.deepStrictEqual(actual, expected);
 
     readFromFile = function(filepath) {
-      return '{"11111": [{"Employee ID": "123","Beverage": "orange","Quantity": "2","Date": "2019-11-26T02:39:14.323Z"}]}';
+      return '{"11111": [{"Employee ID": "11111","Beverage": "orange","Quantity": "2","Date": "2019-11-26T02:39:14.323Z"}]}';
     };
-    actual = saveAction.save(
-      args,
+    actual = saveAction(
+      arguments,
       isFilePresent,
       readFromFile,
       writeIntoFile,
