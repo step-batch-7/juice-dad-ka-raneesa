@@ -16,10 +16,10 @@ describe("generateTransactionRecord", function() {
     ];
 
     const expected = {
-      "Employee ID": 11111,
-      Beverage: "orange",
-      Quantity: 1,
-      Date: "2019-11-26T05:33:25.642Z"
+      empId: 11111,
+      beve: "orange",
+      qty: 1,
+      date: "2019-11-26T05:33:25.642Z"
     };
 
     const timeStamp = function() {
@@ -65,10 +65,10 @@ describe("save", function() {
       path
     );
     let expected = {
-      "Employee ID": 11111,
-      Beverage: "orange",
-      Quantity: 1,
-      Date: "2019-11-26T05:33:25.642Z"
+      empId: 11111,
+      beve: "orange",
+      qty: 1,
+      date: "2019-11-26T05:33:25.642Z"
     };
     assert.deepStrictEqual(actual, expected);
 
@@ -85,10 +85,10 @@ describe("save", function() {
       path
     );
     expected = {
-      "Employee ID": 11111,
-      Beverage: "orange",
-      Quantity: 1,
-      Date: "2019-11-26T05:33:25.642Z"
+      empId: 11111,
+      beve: "orange",
+      qty: 1,
+      date: "2019-11-26T05:33:25.642Z"
     };
     assert.deepStrictEqual(actual, expected);
 
@@ -104,10 +104,10 @@ describe("save", function() {
       path
     );
     expected = {
-      "Employee ID": 11111,
-      Beverage: "orange",
-      Quantity: 1,
-      Date: "2019-11-26T05:33:25.642Z"
+      empId: 11111,
+      beve: "orange",
+      qty: 1,
+      date: "2019-11-26T05:33:25.642Z"
     };
     assert.deepStrictEqual(actual, expected);
   });

@@ -34,9 +34,3 @@ describe("invalidMsg", function() {
     assert.strictEqual(utilities.invalidMsg(), "please enter valid input");
   });
 });
-
-describe("timeStamp", function() {
-  it("Should give time", function() {
-    assert.strictEqual(utilities.timeStamp(), new Date().toJSON());
-  });
-});
