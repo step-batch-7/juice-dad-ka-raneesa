@@ -13,7 +13,7 @@ const validateAndPerformAction = function(
   path
 ) {
   {
-    if (!isValidInput(args)) {
+    if (!isValidInput(arguments)) {
       return invalidMsg();
     }
     return performAction(
@@ -35,7 +35,7 @@ const performAction = function(
   timeStamp,
   path
 ) {
-  if (args.includes("--save")) {
+  if (arguments.includes("--save")) {
     const newRecord = save(
       arguments,
       isFilePresent,
@@ -48,7 +48,7 @@ const performAction = function(
     const tableValues = Object.values(newRecord);
     return "Transaction Recorded:\n" + tableColumns + "\n" + tableValues;
   }
-  if (args.includes("--query")) {
+  if (arguments.includes("--query")) {
     const empData = query(
       arguments,
       isFilePresent,

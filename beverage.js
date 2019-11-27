@@ -1,3 +1,4 @@
+const fs = require("fs");
 const timeStamp = require("./src/utilitiesLib").timeStamp;
 const validateAndPerformAction = require("./src/performAction")
   .validateAndPerformAction;
