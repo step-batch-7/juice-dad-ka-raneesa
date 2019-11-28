@@ -1,8 +1,10 @@
-const assert = require("assert");
-const isValidInput = require("../src/inputValidation.js").isValidInput;
+const chai = require("chai");
+const assert = chai.assert;
+const isValidInput = require("../src/inputValidation").isValidInput;
 const invalidInput = require("../src/inputValidation").invalidInput;
 const validateSave = require("../src/inputValidation").validateSave;
 const validateQuery = require("../src/inputValidation").validateQuery;
+const optionChecking = require("../src/inputValidation").optionChecking;
 
 describe("isValidInput", function() {
   it("Should valid for save action", function() {
@@ -22,14 +24,14 @@ describe("isValidInput", function() {
     assert.ok(["--empId", "11111", "--query"]);
   });
   it("should validate for invalid args", function() {
-    assert.ok(!isValidInput(["--save", "--query", "--empId", "11111"]));
-    assert.ok(!isValidInput(["--empId", "11111"]));
+    assert.notOk(isValidInput(["--save", "--query", "--empId", "11111"]));
+    assert.notOk(isValidInput(["--empId", "11111"]));
   });
 });
 
 describe("invalidInput", function() {
   it("should return false for invalid inputs", function() {
-    assert.ok(!invalidInput("fgdsajf"));
+    assert.notOk(invalidInput("fgdsajf"));
   });
 });
 
@@ -40,8 +42,8 @@ describe("validateSave", function() {
     );
   });
   it("should validate for invalid arguments for save", function() {
-    assert.ok(
-      !validateSave([
+    assert.notOk(
+      validateSave([
         "--save",
         "--empId",
         "deepika",
@@ -72,5 +74,14 @@ describe("validateQuery", function() {
         "3"
       ])
     );
+  });
+});
+
+describe("optionChecking", function() {
+  it("Should validate for if the given options are valid", function() {
+    assert.ok(optionChecking(["--empId", "5363", "--qty", "--beve"]));
+  });
+  it("Should validate for if the given options are invalid", function() {
+    assert.notOk(optionChecking(["--empId", "5363", "--beve"]));
   });
 });

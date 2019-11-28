@@ -43,6 +43,7 @@ const validationOfQuery = function(args) {
   return args.length <= 7 && result;
 };
 
+exports.optionChecking = optionChecking;
 exports.isValidInput = isValidInput;
 exports.invalidInput = invalidInput;
 exports.validateSave = validationOfSave;
