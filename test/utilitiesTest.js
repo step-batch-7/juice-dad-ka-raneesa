@@ -2,6 +2,15 @@ const utilities = require("../src/utilitiesLib");
 const chai = require("chai");
 const assert = chai.assert;
 
+describe("isOdd", function() {
+  it("Should validate if given number is odd", function() {
+    assert.ok(utilities.isOdd(3));
+  });
+  it("Should validate if given number is not odd", function() {
+    assert.notOk(utilities.isOdd(2));
+  });
+});
+
 describe("isNumber", function() {
   it("should validate for numbers only", function() {
     assert.ok(utilities.isNumber("2"));
