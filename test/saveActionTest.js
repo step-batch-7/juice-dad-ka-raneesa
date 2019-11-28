@@ -11,7 +11,7 @@ describe("generateTransactionRecord", function() {
       "1",
       "--empId",
       "11111",
-      "--beverage",
+      "--beve",
       "orange"
     ];
 
@@ -40,7 +40,7 @@ describe("save", function() {
       "1",
       "--empId",
       "11111",
-      "--beverage",
+      "--beve",
       "orange"
     ];
     let timeStamp = function() {
@@ -50,7 +50,7 @@ describe("save", function() {
       return "";
     };
     let readFromFile = function(filepath) {
-      return "{}";
+      return "[]";
     };
     let isFilePresent = function(filepath) {
       return false;
@@ -93,7 +93,7 @@ describe("save", function() {
     assert.deepStrictEqual(actual, expected);
 
     readFromFile = function(filepath) {
-      return '{"11111": [{"Employee ID": "11111","Beverage": "orange","Quantity": "2","Date": "2019-11-26T02:39:14.323Z"}]}';
+      return '[{"empId": "11111","Beve": "orange","Qty": "2","date": "2019-11-26T02:39:14.323Z"}]';
     };
     actual = saveAction(
       arguments,

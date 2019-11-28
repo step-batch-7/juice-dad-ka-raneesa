@@ -13,7 +13,7 @@ describe("isValidInput", function() {
         "--save",
         "--qty",
         "2",
-        "--beverage",
+        "--beve",
         "orange"
       ])
     );
@@ -36,15 +36,7 @@ describe("invalidInput", function() {
 describe("validateSave", function() {
   it("should validate for valid arguments for save", function() {
     assert.ok(
-      validateSave([
-        "--save",
-        "--empId",
-        11111,
-        "--beverage",
-        "orange",
-        "--qty",
-        1
-      ])
+      validateSave(["--save", "--empId", 11111, "--beve", "orange", "--qty", 1])
     );
   });
   it("should validate for invalid arguments for save", function() {

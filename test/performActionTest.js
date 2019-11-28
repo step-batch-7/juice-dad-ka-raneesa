@@ -11,7 +11,7 @@ describe("performAction", function() {
       "1",
       "--empId",
       "11111",
-      "--beverage",
+      "--beve",
       "orange"
     ];
     let timeStamp = function() {
@@ -51,7 +51,7 @@ describe("performAction", function() {
       return "";
     };
     let readFromFile = function(filepath) {
-      return '{"11111":[{"empId":"11111","beve":"orange","qty":"2","date":"2019-11-26T05:33:25.642Z"}]}';
+      return '[{"empId":"11111","beve":"orange","qty":"2","date":"2019-11-26T05:33:25.642Z"}]';
     };
     let isFilePresent = function(filepath) {
       return true;
@@ -68,7 +68,7 @@ describe("performAction", function() {
     let expected =
       "Employee ID,Beverage,Quantity,Date\n" +
       "11111,orange,2,2019-11-26T05:33:25.642Z\n" +
-      "Total Beverages: 2";
+      "Total: 2 Juices";
     assert.strictEqual(actual, expected);
   });
 });

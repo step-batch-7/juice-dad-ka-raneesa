@@ -1,6 +1,5 @@
 const save = require("./savingTransactions").save;
 const query = require("./queringTransactions").query;
-const getIndexOfAction = require("./utilitiesLib").getIndexOfAction;
 const isValidInput = require("./inputValidation").isValidInput;
 const invalidMsg = require("./utilitiesLib").invalidMsg;
 
@@ -27,6 +26,30 @@ const validateAndPerformAction = function(
   }
 };
 
+const reducerForBeverages = function(totalBeverages, obj) {
+  return totalBeverages + parseInt(obj["qty"]);
+};
+
+const getTotalBeverages = function(empRecord) {
+  return empRecord.reduce(reducerForBeverages, 0);
+};
+
+const toRow = function(transaction) {
+  return [
+    transaction.empId,
+    transaction.beve,
+    transaction.qty,
+    transaction.date
+  ].join(",");
+};
+
+const createQueryMsg = function(empRecord) {
+  const totalBeverages = getTotalBeverages(empRecord);
+  const heading = "Employee ID,Beverage,Quantity,Date";
+  const rows = empRecord.map(toRow);
+  return [heading, rows, `Total: ${totalBeverages} Juices`].join("\n");
+};
+
 const performAction = function(
   arguments,
   isFilePresent,
@@ -49,7 +72,7 @@ const performAction = function(
     return "Transaction Recorded:\n" + tableColumns + "\n" + tableValues;
   }
   if (arguments.includes("--query")) {
-    const empData = query(
+    const empRecord = query(
       arguments,
       isFilePresent,
       readFromFile,
@@ -57,23 +80,9 @@ const performAction = function(
       timeStamp,
       path
     );
-    if (empData != 0 && empData != undefined) {
-      const empTotalBeverages = empData.reduce(function(sum, obj) {
-        return sum + parseInt(obj["qty"]);
-      }, 0);
-      const headings = Object.keys(empData[0]);
-      let modifiedHeadings = headings.map(changingLabels);
-      const fields = empData.map(function(obj) {
-        return Object.values(obj);
-      });
-      return (
-        modifiedHeadings +
-        "\n" +
-        fields.join("\n") +
-        "\n" +
-        "Total Beverages: " +
-        empTotalBeverages
-      );
+    if (empRecord != 0 && empRecord != undefined) {
+      const queryMsg = createQueryMsg(empRecord);
+      return queryMsg;
     } else {
       return "Records Not Found";
     }

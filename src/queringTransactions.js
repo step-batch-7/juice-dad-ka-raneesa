@@ -6,30 +6,22 @@ const filterDate = function(filteredData, userData) {
   return filteredData;
 };
 
-const filterbeve = function(filteredData, userData) {
+const filterKeys = function(filteredData, userData, key) {
   filteredData = filteredData.filter(function(trasactions) {
-    return trasactions["beve"] == userData;
+    return trasactions[key] == userData;
   });
   return filteredData;
 };
 
-const concatData = function(record) {
-  return function(concatedData, key) {
-    return concatedData.concat(record[key]);
-  };
-};
-
 const filterData = function(record, userInput) {
-  const keys = Object.keys(record);
-  let filteredData = keys.reduce(concatData(record), []);
-
+  let filteredData = record;
   if (userInput["--empId"] != undefined) {
-    filteredData = record[userInput["--empId"]];
+    filteredData = filterKeys(filteredData, userInput["--empId"], "empId");
   }
 
   if (filteredData != undefined) {
     if (userInput["--beve"] != undefined) {
-      filteredData = filterbeve(filteredData, userInput["--beve"]);
+      filteredData = filterKeys(filteredData, userInput["--beve"], "beve");
     }
   }
 
