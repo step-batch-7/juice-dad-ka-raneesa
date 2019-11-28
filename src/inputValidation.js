@@ -14,16 +14,28 @@ const invalidInput = function() {
   return false;
 };
 
-const validationOfSave = function(args) {
-  const indexOfEmpId = args.indexOf("--empId") + 1;
-  const indexOfQty = args.indexOf("--qty") + 1;
-  const indexOfBeverage = args.indexOf("--beverage") + 1;
+const optionChecking = function(args) {
   return (
-    utilities.isNumber(args[indexOfEmpId]) &&
-    utilities.isNumber(args[indexOfQty]) &&
-    !utilities.isNumber(args[indexOfBeverage]) &&
-    args.length == 7
+    args.includes("--empId") &&
+    args.includes("--beve") &&
+    args.includes("--qty")
   );
+};
+
+const validationOfSave = function(args) {
+  if (optionChecking(args)) {
+    const indexOfEmpId = args.indexOf("--empId") + 1;
+    const indexOfQty = args.indexOf("--qty") + 1;
+    const indexOfBeverage = args.indexOf("--beve") + 1;
+    console.log(indexOfBeverage);
+
+    return (
+      utilities.isNumber(args[indexOfEmpId]) &&
+      utilities.isNumber(args[indexOfQty]) &&
+      !utilities.isNumber(args[indexOfBeverage]) &&
+      args.length == 7
+    );
+  }
 };
 
 const validationOfQuery = function(args) {

@@ -4,21 +4,6 @@ const getIndexOfAction = require("./utilitiesLib").getIndexOfAction;
 const isValidInput = require("./inputValidation").isValidInput;
 const invalidMsg = require("./utilitiesLib").invalidMsg;
 
-const changingLabels = function(key) {
-  if (key == "beve") {
-    return "Beverage";
-  }
-  if (key == "empId") {
-    return "Employee ID";
-  }
-  if (key == "qty") {
-    return "Quantity";
-  }
-  if (key == "date") {
-    return "Date";
-  }
-};
-
 const validateAndPerformAction = function(
   arguments,
   isFilePresent,
@@ -59,12 +44,9 @@ const performAction = function(
       timeStamp,
       path
     );
-    const tableColumns = Object.keys(newRecord);
-    let modifiedTableColumns = tableColumns.map(changingLabels);
+    const tableColumns = ["Employee ID", "Beverage", "Quantity", "Date"];
     const tableValues = Object.values(newRecord);
-    return (
-      "Transaction Recorded:\n" + modifiedTableColumns + "\n" + tableValues
-    );
+    return "Transaction Recorded:\n" + tableColumns + "\n" + tableValues;
   }
   if (arguments.includes("--query")) {
     const empData = query(
