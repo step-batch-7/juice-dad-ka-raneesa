@@ -1,5 +1,15 @@
 const assert = require("assert");
 const queryAction = require("../src/queringTransactions.js").query;
+const makingObject = require("../src/queringTransactions.js").makingObject;
+
+describe("makeObject", function() {
+  it("Should give input data in object format", function() {
+    let args = ["--query", "--empId", "12121", "--qty", "5"];
+    let actual = makingObject(args);
+    let expected = { "--empId": "12121", "--qty": "5" };
+    assert.deepStrictEqual(actual, expected);
+  });
+});
 
 describe("QueryAction", function() {
   it("Should return transactions of given employee", function() {

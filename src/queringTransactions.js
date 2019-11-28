@@ -44,6 +44,10 @@ const makeObject = function(arguments) {
   };
 };
 
+const makingObject = function(arguments) {
+  return arguments.reduce(makeObject(arguments), {});
+};
+
 const query = function(
   arguments,
   isFilePresent,
@@ -52,7 +56,7 @@ const query = function(
   timeStamp,
   path
 ) {
-  const userInput = arguments.reduce(makeObject(arguments), {});
+  const userInput = makingObject(arguments);
 
   if (isFilePresent(path)) {
     const data = readFromFile(path);
@@ -64,3 +68,5 @@ const query = function(
 };
 
 exports.query = query;
+exports.makeObject = makeObject;
+exports.makingObject = makingObject;
