@@ -33,7 +33,7 @@ describe("generateTransactionRecord", function() {
 });
 
 describe("save", function() {
-  it("Should validate new Transaction data", function() {
+  it("Should validate new Transaction if file is not exist", function() {
     let arguments = [
       "--save",
       "--qty",
@@ -71,29 +71,29 @@ describe("save", function() {
       date: "2019-11-26T05:33:25.642Z"
     };
     assert.deepStrictEqual(actual, expected);
-
+  });
+  it("Should validate for new Transaction if file is exist", function() {
+    let arguments = [
+      "--save",
+      "--qty",
+      "1",
+      "--empId",
+      "11111",
+      "--beve",
+      "orange"
+    ];
+    let timeStamp = function() {
+      return "2019-11-26T05:33:25.642Z";
+    };
+    let writeIntoFile = function(filepath, data) {
+      return "";
+    };
+    let readFromFile = function(filepath) {
+      return "[]";
+    };
     path = "./transactionsData";
     isFilePresent = function(filepath) {
       return true;
-    };
-    actual = saveAction(
-      arguments,
-      isFilePresent,
-      readFromFile,
-      writeIntoFile,
-      timeStamp,
-      path
-    );
-    expected = {
-      empId: 11111,
-      beve: "orange",
-      qty: 1,
-      date: "2019-11-26T05:33:25.642Z"
-    };
-    assert.deepStrictEqual(actual, expected);
-
-    readFromFile = function(filepath) {
-      return '[{"empId": "11111","Beve": "orange","Qty": "2","date": "2019-11-26T02:39:14.323Z"}]';
     };
     actual = saveAction(
       arguments,
