@@ -1,5 +1,6 @@
 const utilities = require("../src/utilitiesLib");
-const assert = require("assert");
+const chai = require("chai");
+const assert = chai.assert;
 
 describe("isNumber", function() {
   it("should validate for numbers only", function() {

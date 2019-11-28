@@ -75,7 +75,7 @@ const performAction = function(
       timeStamp,
       path
     );
-    if (empData != 0) {
+    if (empData != 0 && empData != undefined) {
       const empTotalBeverages = empData.reduce(function(sum, obj) {
         return sum + parseInt(obj["qty"]);
       }, 0);

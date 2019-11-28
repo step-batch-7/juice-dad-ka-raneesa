@@ -27,11 +27,8 @@ const validationOfSave = function(args) {
 };
 
 const validationOfQuery = function(args) {
-  if (args.length == 3) {
-    let indexOfEmpId = args.indexOf("--empId") + 1;
-    return utilities.isNumber(args[indexOfEmpId]);
-  }
-  return false;
+  let result = utilities.isOdd(args);
+  return args.length <= 7 && result;
 };
 
 exports.isValidInput = isValidInput;

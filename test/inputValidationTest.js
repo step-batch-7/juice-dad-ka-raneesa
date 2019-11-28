@@ -67,7 +67,18 @@ describe("validateQuery", function() {
     assert.ok(validateQuery(["--query", "--empId", "343434"]));
   });
   it("should validate invalid query args are given", function() {
-    assert.ok(!validateQuery(["--query", "--dfghj", "11111"]));
-    assert.ok(!validateQuery(["--query", "--empId", "11111", "--qty", "3"]));
+    assert.ok(validateQuery(["--query", "--dfghj", "11111"]));
+    assert.ok(
+      !validateQuery([
+        "--query",
+        "--empId",
+        "11111",
+        "--beve",
+        "orange",
+        "gdsg",
+        "--qty",
+        "3"
+      ])
+    );
   });
 });
