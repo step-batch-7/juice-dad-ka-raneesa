@@ -47,7 +47,7 @@ const createQueryMsg = function(empRecord) {
   const totalBeverages = getTotalBeverages(empRecord);
   const heading = "Employee ID,Beverage,Quantity,Date";
   const rows = empRecord.map(toRow);
-  return [heading, rows, `Total: ${totalBeverages} Juices`].join("\n");
+  return [heading, ...rows, `Total: ${totalBeverages} Juices`].join("\n");
 };
 
 const performAction = function(
@@ -91,3 +91,5 @@ const performAction = function(
 
 exports.validateAndPerformAction = validateAndPerformAction;
 exports.performAction = performAction;
+exports.createQueryMsg = createQueryMsg;
+exports.getTotalBeverages = getTotalBeverages;
