@@ -11,7 +11,7 @@ describe("generateTransactionRecord", function() {
       "1",
       "--empId",
       "11111",
-      "--beve",
+      "--beverage",
       "orange"
     ];
 
@@ -40,7 +40,7 @@ describe("save", function() {
       "1",
       "--empId",
       "11111",
-      "--beve",
+      "--beverage",
       "orange"
     ];
     let timeStamp = function() {
@@ -79,7 +79,7 @@ describe("save", function() {
       "1",
       "--empId",
       "11111",
-      "--beve",
+      "--beverage",
       "orange"
     ];
     let timeStamp = function() {

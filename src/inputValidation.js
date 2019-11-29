@@ -17,7 +17,7 @@ const invalidInput = function() {
 const optionChecking = function(args) {
   return (
     args.includes("--empId") &&
-    args.includes("--beve") &&
+    args.includes("--beverage") &&
     args.includes("--qty")
   );
 };
@@ -26,7 +26,7 @@ const validationOfSave = function(args) {
   if (optionChecking(args)) {
     const indexOfEmpId = args.indexOf("--empId") + 1;
     const indexOfQty = args.indexOf("--qty") + 1;
-    const indexOfBeverage = args.indexOf("--beve") + 1;
+    const indexOfBeverage = args.indexOf("--beverage") + 1;
     console.log(indexOfBeverage);
 
     return (

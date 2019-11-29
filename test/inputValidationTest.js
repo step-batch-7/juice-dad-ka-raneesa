@@ -15,7 +15,7 @@ describe("isValidInput", function() {
         "--save",
         "--qty",
         "2",
-        "--beve",
+        "--beverage",
         "orange"
       ])
     );
@@ -38,7 +38,15 @@ describe("invalidInput", function() {
 describe("validateSave", function() {
   it("should validate for valid arguments for save", function() {
     assert.ok(
-      validateSave(["--save", "--empId", 11111, "--beve", "orange", "--qty", 1])
+      validateSave([
+        "--save",
+        "--empId",
+        11111,
+        "--beverage",
+        "orange",
+        "--qty",
+        1
+      ])
     );
   });
   it("should validate for invalid arguments for save", function() {
@@ -47,7 +55,7 @@ describe("validateSave", function() {
         "--save",
         "--empId",
         "deepika",
-        "--beverage",
+        "--beveragerage",
         "123",
         "--qty",
         1
@@ -67,7 +75,7 @@ describe("validateQuery", function() {
         "--query",
         "--empId",
         "11111",
-        "--beve",
+        "--beverage",
         "orange",
         "gdsg",
         "--qty",
@@ -79,9 +87,9 @@ describe("validateQuery", function() {
 
 describe("optionChecking", function() {
   it("Should validate for if the given options are valid", function() {
-    assert.ok(optionChecking(["--empId", "5363", "--qty", "--beve"]));
+    assert.ok(optionChecking(["--empId", "5363", "--qty", "--beverage"]));
   });
   it("Should validate for if the given options are invalid", function() {
-    assert.notOk(optionChecking(["--empId", "5363", "--beve"]));
+    assert.notOk(optionChecking(["--empId", "5363", "--beverage"]));
   });
 });

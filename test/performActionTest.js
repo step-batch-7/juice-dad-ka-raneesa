@@ -64,7 +64,7 @@ describe("performAction", function() {
       "1",
       "--empId",
       "11111",
-      "--beve",
+      "--beverage",
       "orange"
     ];
     let timeStamp = function() {

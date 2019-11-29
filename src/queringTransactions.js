@@ -20,8 +20,8 @@ const filterData = function(record, userInput) {
   }
 
   if (filteredData != undefined) {
-    if (userInput["--beve"] != undefined) {
-      filteredData = filterKeys(filteredData, userInput["--beve"], "beve");
+    if (userInput["--beverage"] != undefined) {
+      filteredData = filterKeys(filteredData, userInput["--beverage"], "beve");
     }
   }
 
@@ -34,7 +34,7 @@ const filterData = function(record, userInput) {
 };
 
 const makeObject = function(arguments) {
-  const validOption = ["--beve", "--qty", "--date", "--empId"];
+  const validOption = ["--beverage", "--qty", "--date", "--empId"];
   let args = arguments;
   return function(object, key, index) {
     if (validOption.includes(key)) {

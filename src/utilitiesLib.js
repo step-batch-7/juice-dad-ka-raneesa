@@ -13,8 +13,8 @@ const isNumber = function(num) {
 };
 
 const getIndexOfAction = function(args) {
-  let exorArgs = args.includes("--save") && args.includes("--query");
-  if (exorArgs) {
+  let result = args.includes("--save") && args.includes("--query");
+  if (result) {
     return -1;
   }
   return (args.indexOf("--save") + 1 || args.indexOf("--query") + 1) - 1;

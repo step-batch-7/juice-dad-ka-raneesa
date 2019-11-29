@@ -1,6 +1,6 @@
 const generateTransactionRecord = function(input, timeStamp) {
   const indexOfEmpId = input.indexOf("--empId") + 1;
-  const indexOfBeverage = input.indexOf("--beve") + 1;
+  const indexOfBeverage = input.indexOf("--beverage") + 1;
   const indexOfQty = input.indexOf("--qty") + 1;
 
   return {
