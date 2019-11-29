@@ -27,7 +27,6 @@ const validationOfSave = function(args) {
     const indexOfEmpId = args.indexOf("--empId") + 1;
     const indexOfQty = args.indexOf("--qty") + 1;
     const indexOfBeverage = args.indexOf("--beverage") + 1;
-    console.log(indexOfBeverage);
 
     return (
       utilities.isNumber(args[indexOfEmpId]) &&
