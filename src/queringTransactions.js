@@ -21,7 +21,11 @@ const filterData = function(record, userInput) {
 
   if (filteredData != undefined) {
     if (userInput["--beverage"] != undefined) {
-      filteredData = filterKeys(filteredData, userInput["--beverage"], "beve");
+      filteredData = filterKeys(
+        filteredData,
+        userInput["--beverage"],
+        "beverage"
+      );
     }
   }
 
@@ -61,6 +65,7 @@ const query = function(
   if (isFilePresent(path)) {
     const data = readFromFile(path);
     const record = JSON.parse(data);
+
     const transactions = filterData(record, userInput);
     return transactions;
   }

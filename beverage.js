@@ -1,17 +1,19 @@
 const fs = require("fs");
-const timeStamp = require("./src/utilitiesLib").timeStamp;
+const { timeStamp, getDataStorePath } = require("./src/config");
+//const timeStamp = require("./src/utilitiesLib").timeStamp;
 const validateAndPerformAction = require("./src/performAction")
   .validateAndPerformAction;
 
 const main = function() {
   const arguments = process.argv.slice(2);
-  const path = "./transactionsData.json";
+  const path = getDataStorePath(process.env);
+  const timeStampWithEnv = timeStamp.bind(null, process.env);
   const result = validateAndPerformAction(
     arguments,
     fs.existsSync,
     fs.readFileSync,
     fs.writeFileSync,
-    timeStamp,
+    timeStampWithEnv,
     path
   );
   console.log(result);

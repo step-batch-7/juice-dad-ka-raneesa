@@ -55,7 +55,7 @@ describe("validateSave", function() {
         "--save",
         "--empId",
         "deepika",
-        "--beveragerage",
+        "--beverage",
         "123",
         "--qty",
         1

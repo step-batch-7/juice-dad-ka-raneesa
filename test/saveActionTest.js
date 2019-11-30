@@ -17,7 +17,7 @@ describe("generateTransactionRecord", function() {
 
     const expected = {
       empId: 11111,
-      beve: "orange",
+      beverage: "orange",
       qty: 1,
       date: "2019-11-26T05:33:25.642Z"
     };
@@ -66,7 +66,7 @@ describe("save", function() {
     );
     let expected = {
       empId: 11111,
-      beve: "orange",
+      beverage: "orange",
       qty: 1,
       date: "2019-11-26T05:33:25.642Z"
     };
@@ -105,7 +105,7 @@ describe("save", function() {
     );
     expected = {
       empId: 11111,
-      beve: "orange",
+      beverage: "orange",
       qty: 1,
       date: "2019-11-26T05:33:25.642Z"
     };

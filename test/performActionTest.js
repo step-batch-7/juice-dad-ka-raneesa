@@ -8,7 +8,7 @@ describe("createQueryMsg", function() {
   it("should give a text representation of list of one transaction", function() {
     const newTransactionRecord = [
       {
-        beve: "orange",
+        beverage: "orange",
         empId: 123,
         qty: 4,
         date: "2019-11-20T05:50:28.267Z"
@@ -16,7 +16,7 @@ describe("createQueryMsg", function() {
     ];
     const actual = createQueryMsg(newTransactionRecord);
     const expected =
-      "Employee ID,Beverage,Quantity,Date\n123,orange,4,2019-11-20T05:50:28.267Z\nTotal: 4 Juices";
+      "Employee ID, Beverage, Quantity, Date\n123,orange,4,2019-11-20T05:50:28.267Z\nTotal: 4 Juices";
     assert.strictEqual(actual, expected);
   });
 });
@@ -28,7 +28,7 @@ describe("getTotalBeverages", function() {
         empId: 123,
         beverage: "org",
         qty: 4,
-        date: "2019-11-20T05:50:28.267Z"
+        date: new Date("2019-11-20T05:50:28.267Z")
       }
     ];
     const actual = getTotalBeverages(empTransactions);
@@ -41,13 +41,13 @@ describe("getTotalBeverages", function() {
         empId: 123,
         beverage: "org",
         qty: 4,
-        date: "2019-11-20T05:50:28.267Z"
+        date: new Date("2019-11-20T05:50:28.267Z")
       },
       {
         empId: 123,
         beverage: "org",
         qty: 4,
-        date: "2019-11-20T05:50:28.267Z"
+        date: new Date("2019-11-20T05:50:28.267Z")
       }
     ];
     const actual = getTotalBeverages(empTransactions);
@@ -68,7 +68,7 @@ describe("performAction", function() {
       "orange"
     ];
     let timeStamp = function() {
-      return "2019-11-26T05:33:25.642Z";
+      return new Date("2019-11-26T05:33:25.642Z");
     };
     let writeIntoFile = function(filepath, data) {
       return "";
@@ -89,20 +89,20 @@ describe("performAction", function() {
       path
     );
     let expected =
-      "Transaction Recorded:\nEmployee ID,Beverage,Quantity,Date\n11111,orange,1,2019-11-26T05:33:25.642Z";
+      "Transaction Recorded:\nEmployee ID, Beverage, Quantity, Date\n11111,orange,1,2019-11-26T05:33:25.642Z";
     assert.strictEqual(actual, expected);
   });
 
   it("Should should work for query", function() {
     let arguments = ["--query", "--empId", "11111"];
     let timeStamp = function() {
-      return "2019-11-26T05:33:25.642Z";
+      return new Date("2019-11-26T05:33:25.642Z");
     };
     let writeIntoFile = function(filepath, data) {
       return "";
     };
     let readFromFile = function(filepath) {
-      return '[{"empId":"11111","beve":"orange","qty":"2","date":"2019-11-26T05:33:25.642Z"}]';
+      return '[{"empId":"11111","beverage":"orange","qty":"2","date":"2019-11-26T05:33:25.642Z"}]';
     };
     let isFilePresent = function(filepath) {
       return true;
@@ -117,7 +117,7 @@ describe("performAction", function() {
       path
     );
     let expected =
-      "Employee ID,Beverage,Quantity,Date\n" +
+      "Employee ID, Beverage, Quantity, Date\n" +
       "11111,orange,2,2019-11-26T05:33:25.642Z\n" +
       "Total: 2 Juices";
     assert.strictEqual(actual, expected);

@@ -5,7 +5,7 @@ const generateTransactionRecord = function(input, timeStamp) {
 
   return {
     empId: +input[indexOfEmpId],
-    beve: input[indexOfBeverage],
+    beverage: input[indexOfBeverage],
     qty: +input[indexOfQty],
     date: timeStamp()
   };

@@ -37,16 +37,18 @@ const getTotalBeverages = function(empRecord) {
 const toRow = function(transaction) {
   return [
     transaction.empId,
-    transaction.beve,
+    transaction.beverage,
     transaction.qty,
     transaction.date
-  ].join(",");
+  ];
 };
 
 const createQueryMsg = function(empRecord) {
   const totalBeverages = getTotalBeverages(empRecord);
-  const heading = "Employee ID,Beverage,Quantity,Date";
+  const heading = "Employee ID, Beverage, Quantity, Date";
+
   const rows = empRecord.map(toRow);
+
   return [heading, ...rows, `Total: ${totalBeverages} Juices`].join("\n");
 };
 
@@ -67,8 +69,13 @@ const performAction = function(
       timeStamp,
       path
     );
-    const tableColumns = ["Employee ID", "Beverage", "Quantity", "Date"];
-    const tableValues = Object.values(newRecord);
+    const tableColumns = ["Employee ID", " Beverage", " Quantity", " Date"];
+    const tableValues = [
+      newRecord.empId,
+      newRecord.beverage,
+      newRecord.qty,
+      newRecord.date.toJSON()
+    ];
     return "Transaction Recorded:\n" + tableColumns + "\n" + tableValues;
   }
   if (arguments.includes("--query")) {
@@ -80,11 +87,12 @@ const performAction = function(
       timeStamp,
       path
     );
+
     if (empRecord != 0 && empRecord != undefined) {
       const queryMsg = createQueryMsg(empRecord);
       return queryMsg;
     } else {
-      return "Records Not Found";
+      return createQueryMsg([]);
     }
   }
 };

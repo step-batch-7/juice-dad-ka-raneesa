@@ -82,7 +82,7 @@ describe("QueryAction", function() {
       return "";
     };
     let readFromFile = function(filepath) {
-      return '{"11111": [{"Employee ID": "11111","Beverage": "orange","Quantity": "2","Date": "2019-11-26T02:39:14.323Z"}]}';
+      return '[{"Employee ID": "11111","Beverage": "orange","Quantity": "2","Date": "2019-11-26T02:39:14.323Z"}]';
     };
     let isFilePresent = function(filepath) {
       return false;
