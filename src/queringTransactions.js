@@ -1,36 +1,17 @@
-const filterDate = function(filteredData, userData) {
-  filteredData = filteredData.filter(function(transactions) {
-    const length = userData.length;
-    return transactions["date"].slice(0, length) == userData;
-  });
-  return filteredData;
-};
+const isMatch = function(userInput, transaction) {
+  let test = true;
+  for (let options in userInput) {
+    let optionToCheck = userInput[options];
+    let optionOfCurrentData = transaction[options];
 
-const filterKeys = function(filteredData, userData, key) {
-  filteredData = filteredData.filter(function(trasactions) {
-    return trasactions[key] == userData;
-  });
-  return filteredData;
-};
-
-const filterData = function(record, userInput) {
-  let filteredData = record;
-  if (userInput["--empId"] != undefined) {
-    filteredData = filterKeys(filteredData, userInput["--empId"], "empId");
+    if (options === "date") {
+      let length = userInput[options].length;
+      optionOfCurrentData = optionOfCurrentData.slice(0, length);
+    }
+    test = test && optionToCheck === optionOfCurrentData;
   }
 
-  if (userInput["--beverage"] != undefined) {
-    filteredData = filterKeys(
-      filteredData,
-      userInput["--beverage"],
-      "beverage"
-    );
-  }
-
-  if (userInput["--date"] != undefined) {
-    return filterDate(filteredData, userInput["--date"]);
-  }
-  return filteredData;
+  return test;
 };
 
 const makeObject = function(arguments) {
@@ -38,8 +19,11 @@ const makeObject = function(arguments) {
   let args = arguments;
   return function(object, key, index) {
     if (validOption.includes(key)) {
-      object[key] = args[index + 1];
+      let option = key.slice(2);
+
+      object[option] = args[index + 1];
     }
+
     return object;
   };
 };
@@ -62,7 +46,7 @@ const query = function(
     const data = readFromFile(path);
     const record = JSON.parse(data);
 
-    const transactions = filterData(record, userInput);
+    const transactions = record.filter(isMatch.bind(null, userInput));
     return transactions;
   }
   return 0;

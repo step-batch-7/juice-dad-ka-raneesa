@@ -4,7 +4,7 @@ const generateTransactionRecord = function(input, timeStamp) {
   const indexOfQty = input.indexOf("--qty") + 1;
 
   return {
-    empId: +input[indexOfEmpId],
+    empId: input[indexOfEmpId],
     beverage: input[indexOfBeverage],
     qty: +input[indexOfQty],
     date: timeStamp()

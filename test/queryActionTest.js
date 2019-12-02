@@ -6,7 +6,7 @@ describe("makeObject", function() {
   it("Should give input data in object format", function() {
     let args = ["--query", "--empId", "12121", "--qty", "5"];
     let actual = makingObject(args);
-    let expected = { "--empId": "12121", "--qty": "5" };
+    let expected = { empId: "12121", qty: "5" };
     assert.deepStrictEqual(actual, expected);
   });
 });
