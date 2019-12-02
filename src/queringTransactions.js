@@ -19,20 +19,16 @@ const filterData = function(record, userInput) {
     filteredData = filterKeys(filteredData, userInput["--empId"], "empId");
   }
 
-  if (filteredData != undefined) {
-    if (userInput["--beverage"] != undefined) {
-      filteredData = filterKeys(
-        filteredData,
-        userInput["--beverage"],
-        "beverage"
-      );
-    }
+  if (userInput["--beverage"] != undefined) {
+    filteredData = filterKeys(
+      filteredData,
+      userInput["--beverage"],
+      "beverage"
+    );
   }
 
-  if (filteredData != undefined) {
-    if (userInput["--date"] != undefined) {
-      return filterDate(filteredData, userInput["--date"]);
-    }
+  if (userInput["--date"] != undefined) {
+    return filterDate(filteredData, userInput["--date"]);
   }
   return filteredData;
 };
