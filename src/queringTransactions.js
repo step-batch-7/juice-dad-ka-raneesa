@@ -53,5 +53,6 @@ const query = function(
 };
 
 exports.query = query;
+exports.isMatch = isMatch;
 exports.makeObject = makeObject;
 exports.makingObject = makingObject;
