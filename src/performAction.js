@@ -48,8 +48,12 @@ const createQueryMsg = function(empRecord) {
   const heading = "Employee ID, Beverage, Quantity, Date";
 
   const rows = empRecord.map(toRow);
+  let juices = "Juices";
+  if (totalBeverages == 1) {
+    juices = "Juice";
+  }
 
-  return [heading, ...rows, `Total: ${totalBeverages} Juices`].join("\n");
+  return [heading, ...rows, `Total: ${totalBeverages} ${juices}`].join("\n");
 };
 
 const performAction = function(
